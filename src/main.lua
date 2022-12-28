@@ -10,7 +10,7 @@ function love.load()
     
     player = Player(245,620)
     enemy = Enemy(0,0)
-    listOfBullets= {}
+    listOfBullets = {}
 end
 
 --update function -------------------------

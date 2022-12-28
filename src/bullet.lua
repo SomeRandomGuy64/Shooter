@@ -14,6 +14,7 @@ end
 
 function Bullet:draw()
     Bullet.super.update(self)
+    --sets colour to blue
     love.graphics.setColor(0,0,1)
     love.graphics.rectangle("fill", self.x, self.y, 10, 10)
 end

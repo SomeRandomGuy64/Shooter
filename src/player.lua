@@ -3,8 +3,7 @@ Player = Entity:extend()
 function Player:new(x, y)
     Player.super.new(self, x, y)
     self.speed = 325
-    self.width = 10
-    self.height = 10
+    self.radius = 5
 end
 
 function Player:update(dt)
@@ -12,26 +11,26 @@ function Player:update(dt)
 --controls -- also detects when the player is on the edge of the screen
     if love.keyboard.isDown("left") then
         self.x = self.x - self.speed * dt
-        if self.x < 0 then
-            self.x = 0
+        if self.x - self.radius < 0 then
+            self.x = self.radius
         end
     end
     if love.keyboard.isDown("right") then
         self.x = self.x + self.speed * dt
-        if self.x > 480 - self.width then
-            self.x = 480 - self.width
+        if self.x > 480 - self.radius then
+            self.x = 480 - self.radius
         end
     end
     if love.keyboard.isDown("up") then
         self.y = self.y - self.speed * dt
-        if self.y < 0 then
-            self.y = 0
+        if self.y - self.radius < 0 then
+            self.y = self.radius
         end
     end
     if love.keyboard.isDown("down") then
         self.y = self.y + self.speed * dt
-        if self.y > 640 - self. height then
-            self.y = 640 - self.height
+        if self.y > 640 - self.radius then
+            self.y = 640 - self.radius
         end
     end
 end
@@ -40,7 +39,7 @@ function Player:draw()
     Player.super.draw(self)
     --sets colour to white
     love.graphics.setColor(1,1,1)
-    love.graphics.rectangle("fill", self.x, self.y, self.width, self.height)
+    love.graphics.circle("fill", self.x, self.y, self.radius)
 end
 
 --Creates bullets when the spacebar is pressed ------------------

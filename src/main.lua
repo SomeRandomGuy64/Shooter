@@ -7,7 +7,7 @@ function love.load()
     require "src.player"
     require "src.bullet"
     
-    player = Player(700,635)
+    player = Player(245,620)
     listOfBullets= {}
 end
 

@@ -3,7 +3,7 @@ function love.conf(t)
     t.console = false
     t.gammacorrect = true
     t.window.title = "learning love"
-    t.window.width = 1280
-    t.window.height = 720
+    t.window.width = 480
+    t.window.height = 640
     t.window.setVSync = 1
 end

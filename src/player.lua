@@ -2,16 +2,22 @@ Player = Entity:extend()
 
 function Player:new(x, y)
     Player.super.new(self, x, y)
-    self.speed = 200
+    self.speed = 450
 end
 
 function Player:update(dt)
     Player.super.update(self, dt)
 
     if love.keyboard.isDown("left") then
+        if love.keyboard.isDown("right") then
+            self.x = self.x - self.speed * 2 * dt
+        end
         self.x = self.x - self.speed * dt
     end
     if love.keyboard.isDown("right") then
+        if love.keyboard.isDown("left") then
+            self.x = self.x + self.speed * 2 * dt
+        end
         self.x = self.x + self.speed * dt
     end
 end

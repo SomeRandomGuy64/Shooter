@@ -6,14 +6,17 @@ function love.load()
     require "src.entity"
     require "src.player"
     require "src.bullet"
+    require "src.enemy"
     
     player = Player(245,620)
+    enemy = Enemy(0,0)
     listOfBullets= {}
 end
 
 --update function -------------------------
 function love.update(dt)
     player:update(dt)
+    enemy:update(dt)
 
     bulletUpdate(dt)
 end
@@ -21,6 +24,7 @@ end
 --draw function ---------------------------
 function love.draw()
     player:draw()
+    enemy:draw()
 
     bulletDraw()
 end

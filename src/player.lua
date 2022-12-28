@@ -9,7 +9,7 @@ end
 
 function Player:update(dt)
     Player.super.update(self, dt)
-
+--controls -- also detects when the player is on the edge of the screen
     if love.keyboard.isDown("left") then
         self.x = self.x - self.speed * dt
         if self.x < 0 then
@@ -37,7 +37,7 @@ function Player:update(dt)
 end
 
 function Player:draw()
-    Player.super.update(self)
+    Player.super.draw(self)
     --sets colour to white
     love.graphics.setColor(1,1,1)
     love.graphics.rectangle("fill", self.x, self.y, self.width, self.height)

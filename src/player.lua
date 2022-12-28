@@ -21,6 +21,7 @@ function Player:draw()
     love.graphics.rectangle("fill", self.x, self.y, 10, 10)
 end
 
+--Creates bullets when the spacebar is pressed ------------------
 function Player:keyPressed(key)
     if key == "space" then
         table.insert(listOfBullets, Bullet(self.x, self.y))

@@ -67,7 +67,7 @@ function Player:draw()
     love.graphics.setColor(1,1,1)
     love.graphics.circle("fill", self.x, self.y, self.radius)
     love.graphics.print("Score: " .. self.score, 0, 0)
-    love.graphics.print("Time: " .. self.time, 0, 30)
+    love.graphics.print("Time: " .. math.ceil(self.time), 0, 30)
 end
 
 --Creates bullets when the spacebar is pressed ------------------

@@ -5,11 +5,12 @@ function Player:new(x, y)
     self.speed = 325
     self.radius = 5
     self.score = 0
-    self.shoot = 0
-    self.bPS = 30
-    self.rBPS = 1/self.bPS
     self.time = 100
+    self.shootTiming = 0
+    self.shootSpeed = 1
     self.timeSpeed = 1
+    self.oldTiming = 0
+    self.timeDifference = 0
 end
 
 function Player:update(dt)
@@ -19,13 +20,16 @@ function Player:update(dt)
         self.time = self.time - self.timeSpeed * dt
     end
 
+    --shoot timer ------------------
+    self.timeDifference = self.shootTiming - self.oldTiming
+    if self.timeDifference >= 0.1 then
+        self.oldTiming = self.shootTiming
+    end
+    self.shootTiming = self.shootTiming + self.shootSpeed * dt
+
     --shooting bullets -----------
     if love.keyboard.isDown("space") then
-        self.shoot = self.shoot + 1 * dt
-        if math.floor(self.shoot) > 1 then
-            self.shoot = 0
-        end
-        if self.shoot % 1 == 0 then
+        if self.timeDifference >= 0.1 then
             table.insert(listOfBullets, Bullet(self.x, self.y))
         end
     end

@@ -4,6 +4,7 @@ function Player:new(x, y)
     Player.super.new(self, x, y)
     self.speed = 325
     self.radius = 5
+    self.score = 0
 end
 
 function Player:update(dt)
@@ -40,6 +41,7 @@ function Player:draw()
     --sets colour to white
     love.graphics.setColor(1,1,1)
     love.graphics.circle("fill", self.x, self.y, self.radius)
+    love.graphics.print("Score " .. self.score, 0, 0)
 end
 
 --Creates bullets when the spacebar is pressed ------------------

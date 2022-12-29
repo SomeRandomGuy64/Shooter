@@ -38,6 +38,10 @@ end
 function bulletUpdate(dt)
     for i, v in ipairs(listOfBullets) do
         v:update(dt)
+        v:checkCollision(enemy, player)
+        if v.dead then
+            table.remove(listOfBullets, i)
+        end
     end
 end
 

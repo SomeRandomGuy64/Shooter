@@ -14,7 +14,7 @@ end
 function Enemy:update(dt)
     Enemy.super.update(self, dt)
     self.x = self.x + self.speed * dt
-    if self.x > 480 - self.radius  or self.x < 0 + self.radius then
+    if self.x >= 480 - self.radius  or self.x <= 0 + self.radius then
         self.speed = -self.speed
     end
 end

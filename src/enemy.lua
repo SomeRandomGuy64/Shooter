@@ -16,6 +16,8 @@ function Enemy:new(x, y)
     self.angleX = 0
     self.angleY = 0
     self.hypotenuse = 0
+
+    self.angle = 0
 end
 
 function Enemy:update(dt)
@@ -28,9 +30,11 @@ function Enemy:update(dt)
     self.angleX = self.x - self.oldX
     self.angleY = self.y - self.oldY
     self.hypotenuse = math.sqrt(self.angleX^2 + self.angleY^2)
+
+    self.angle = math.atan2(self.angleY, self.angleX)
     
 
-    if self.x >= 480 - self.radius  or self.x <= 0 + self.radius then
+    if self.x >= 480 - self.radius or self.x <= 0 + self.radius then
         self.speed = -self.speed
     end
 end

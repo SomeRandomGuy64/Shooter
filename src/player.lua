@@ -3,6 +3,7 @@ Player = Entity:extend()
 function Player:new(x, y)
     Player.super.new(self, x, y)
     self.speed = 325
+    self.diagonalSpeed = math.sqrt((self.speed^2)*2)/2
     self.radius = 5
     self.score = 0
     self.time = 100
@@ -35,28 +36,66 @@ function Player:update(dt)
     end
 
 --controls -- also detects when the player is on the edge of the screen
-    if love.keyboard.isDown("left") then
-        self.x = self.x - self.speed * dt
+    if love.keyboard.isDown("left") and love.keyboard.isDown("up") then
+        self.x = self.x - self.diagonalSpeed * dt
+        self.y = self.y - self.diagonalSpeed * dt
         if self.x - self.radius < 0 then
             self.x = self.radius
         end
-    end
-    if love.keyboard.isDown("right") then
-        self.x = self.x + self.speed * dt
-        if self.x > 480 - self.radius then
-            self.x = 480 - self.radius
-        end
-    end
-    if love.keyboard.isDown("up") then
-        self.y = self.y - self.speed * dt
         if self.y - self.radius < 0 then
             self.y = self.radius
         end
-    end
-    if love.keyboard.isDown("down") then
-        self.y = self.y + self.speed * dt
+    elseif love.keyboard.isDown("left") and love.keyboard.isDown("down") then
+        self.x = self.x - self.diagonalSpeed * dt
+        self.y = self.y + self.diagonalSpeed * dt
+        if self.x - self.radius < 0 then
+            self.x = self.radius
+        end
         if self.y > 640 - self.radius then
             self.y = 640 - self.radius
+        end
+    elseif love.keyboard.isDown("right") and love.keyboard.isDown("up") then
+        self.x = self.x + self.diagonalSpeed * dt
+        self.y = self.y - self.diagonalSpeed * dt
+        if self.x > 480 - self.radius then
+            self.x = 480 - self.radius
+        end
+        if self.y - self.radius < 0 then
+            self.y = self.radius
+        end
+    elseif love.keyboard.isDown("right") and love.keyboard.isDown("down") then
+        self.x = self.x + self.diagonalSpeed * dt
+        self.y = self.y + self.diagonalSpeed * dt
+        if self.x > 480 - self.radius then
+            self.x = 480 - self.radius
+        end
+        if self.y > 640 - self.radius then
+            self.y = 640 - self.radius
+        end
+    else
+        if love.keyboard.isDown("left") then
+            self.x = self.x - self.speed * dt
+            if self.x - self.radius < 0 then
+                self.x = self.radius
+            end
+        end
+        if love.keyboard.isDown("right") then
+            self.x = self.x + self.speed * dt
+            if self.x > 480 - self.radius then
+                self.x = 480 - self.radius
+            end
+        end
+        if love.keyboard.isDown("up") then
+            self.y = self.y - self.speed * dt
+            if self.y - self.radius < 0 then
+                self.y = self.radius
+            end
+        end
+        if love.keyboard.isDown("down") then
+            self.y = self.y + self.speed * dt
+            if self.y > 640 - self.radius then
+                self.y = 640 - self.radius
+            end
         end
     end
 end

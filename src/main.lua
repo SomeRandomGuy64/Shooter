@@ -11,6 +11,7 @@ function love.load()
     player = Player(245,620)
     enemy = Enemy(0,0)
     listOfBullets = {}
+    love.graphics.setBackgroundColor(0,0.66,0)
 end
 
 --update function -------------------------

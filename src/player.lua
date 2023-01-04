@@ -23,14 +23,14 @@ function Player:update(dt)
 
     --shoot timer ------------------
     self.timeDifference = self.shootTiming - self.oldTiming
-    if self.timeDifference >= 0.1 then
+    if self.timeDifference >= 0.05 then
         self.oldTiming = self.shootTiming
     end
     self.shootTiming = self.shootTiming + self.shootSpeed * dt
 
     --shooting bullets -----------
     if love.keyboard.isDown("space") then
-        if self.timeDifference >= 0.1 then
+        if self.timeDifference >= 0.05 then
             table.insert(listOfBullets, Bullet(self.x, self.y))
         end
     end

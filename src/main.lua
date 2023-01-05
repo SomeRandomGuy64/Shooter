@@ -2,11 +2,11 @@ _G.love = require ("love")
 
 --load function----------------------------
 function love.load()
-    Object = require "src.classic"
-    require "src.entity"
-    require "src.player"
-    require "src.bullet"
-    require "src.enemy"
+    Object = require "classic"
+    require "entity"
+    require "player"
+    require "bullet"
+    require "enemy"
     
     player = Player(245,620)
     enemy = Enemy(0,0)

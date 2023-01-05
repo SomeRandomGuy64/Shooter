@@ -45,7 +45,7 @@ function Enemy:draw()
     love.graphics.setColor(1,0,0)
     love.graphics.circle("line", self.x, self.y, self.radius)
 
-    local controlPoints = {20,20,240,1260,460,20}
+    local controlPoints = {240,20,-480,220,920,420,240,620}
     local curve = love.math.newBezierCurve(controlPoints)
     local time = love.timer.getTime()
     local loopTime = 4
